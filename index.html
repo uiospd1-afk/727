@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream World Festival 2026: มหัศจรรย์โลกแห่งความฝัน</title>
+    <style>
+        :root {
+            --primary-color: #0077b6;
+            --primary-dark: #03045e;
+            --secondary-color: #90e0ef;
+            --accent-color: #00b4d8;
+            --bg-color: #f8f9fa;
+            --text-color: #333333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', 'Prompt', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        header.hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(3,4,94,0.8), rgba(0,119,182,0.8)), url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Sections General */
+        section {
+            padding: 5rem 10% 3rem 10%;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Details Section */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .detail-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .detail-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Activities Section */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .activity-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .activity-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .activity-content {
+            padding: 1.5rem;
+        }
+
+        .activity-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        /* Schedule Section */
+        .schedule-list {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .time {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-container p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Mobile Menu */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* สำหรับความเรียบง่ายในไฟล์เดียว ขอซ่อนเมนูย่อยบนมือถือ หรือสามารถปรับเพิ่มได้ */
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Dream World Festival</div>
+        <ul class="nav-links">
+            <li><a href="#about">รายละเอียด</a></li>
+            <li><a href="#activities">กิจกรรมเด่น</a></li>
+            <li><a href="#schedule">กำหนดการ</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Dream World Festival 2026</h1>
+        <p>มหัศจรรย์โลกแห่งความฝัน งานนิทรรศการวิชาการและคอนเสิร์ตสุดยิ่งใหญ่ประจำปี</p>
+        <a href="#contact" class="btn">ลงทะเบียนเข้าร่วมงาน</a>
+    </header>
+
+    <!-- Details Section -->
+    <section id="about">
+        <h2>รายละเอียดงาน</h2>
+        <div class="details-grid">
+            <div class="detail-card">
+                <h3>วันและเวลา</h3>
+                <p>วันศุกร์ที่ 20 พฤศจิกายน 2569<br>เวลา 08:30 - 16:30 น.</p>
+            </div>
+            <div class="detail-card">
+                <h3>สถานที่จัดงาน</h3>
+                <p>หอประชุมใหญ่ และสนามฟุตบอลโรงเรียน</p>
+            </div>
+            <div class="detail-card">
+                <h3>ผู้เข้าร่วมงาน</h3>
+                <p>นักเรียน, ครู และผู้ปกครองทุกท่าน</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities">
+        <h2>กิจกรรมเด่น 3 อย่าง</h2>
+        <div class="activities-grid">
+            <div class="activity-card">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="ดนตรีในสวน" class="activity-img">
+                <div class="activity-content">
+                    <h3>การแสดงดนตรีในสวน</h3>
+                    <p>เพลิดเพลินไปกับบทเพลงเพราะๆ จากวงดนตรีโรงเรียนและศิลปินรับเชิญสุดพิเศษ</p>
+                </div>
+            </div>
+            <div class="activity-card">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80" alt="นิทรรศการโครงงาน" class="activity-img">
+                <div class="activity-content">
+                    <h3>ซุ้มนิทรรศการโครงงาน</h3>
+                    <p>ตื่นตาตื่นใจกับผลงานและโครงงานสุดล้ำจากความคิดสร้างสรรค์ของนักเรียนแต่ละห้อง</p>
+                </div>
+            </div>
+            <div class="activity-card">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="ตลาดนัดและ Food Truck" class="activity-img">
+                <div class="activity-content">
+                    <h3>ตลาดนัดและ Food Truck</h3>
+                    <p>อิ่มอร่อยกับร้านค้าสุดชิคและขบวนรถ Food Truck หลากหลายเมนูให้เลือกสรร</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule">
+        <h2>กำหนดการภายในงาน</h2>
+        <div class="schedule-list">
+            <div class="schedule-item">
+                <span class="time">08:30 - 09:15 น.</span>
+                <span>พิธีเปิดงานและกล่าวต้อนรับ ณ หอประชุมใหญ่</span>
+            </div>
+            <div class="schedule-item">
+                <span class="time">09:30 - 12:00 น.</span>
+                <span>เปิดเข้าชมนิทรรศการโครงงานแต่ละซุ้ม</span>
+            </div>
+            <div class="schedule-item">
+                <span class="time">12:00 - 13:00 น.</span>
+                <span>พักรับประทานอาหาร ณ โซน Food Truck</span>
+            </div>
+            <div class="schedule-item">
+                <span class="time">13:15 - 16:30 น.</span>
+                <span>การแสดงดนตรีในสวนและพิธีปิดงาน</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2>บรรยากาศงานปีก่อนๆ</h2>
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80" alt="Gallery 1" class="gallery-img">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Gallery 2" class="gallery-img">
+            <img src="https://images.unsplash.com/photo-1469488865564-c2de10f69f96?auto=format&fit=crop&w=600&q=80" alt="Gallery 3" class="gallery-img">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80" alt="Gallery 4" class="gallery-img">
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>ช่องทางการติดต่อ</h2>
+        <div class="contact-container">
+            <p><strong>Facebook Page:</strong> Dream World Festival School</p>
+            <p><strong>เบอร์โทรศัพท์:</strong> 02-XXX-XXXX (คณะกรรมการจัดงาน)</p>
+            <p><strong>อีเมล:</strong> contact@dreamworldfestival.ac.th</p>
+            <br>
+            <a href="#" class="btn" onclick="alert('ขอบคุณที่สนใจลงทะเบียนเข้าร่วมงาน!'); return false;">ลงทะเบียนเข้าร่วมงาน</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Dream World Festival. All Rights Reserved. Designed for High School Students.</p>
+    </footer>
+
+</body>
+              </html>
+              
